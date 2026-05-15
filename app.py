@@ -349,10 +349,7 @@ def detect_anomalies(df):
             f"{zero_pft} Zero/Negative Profit Entries: Some entries are generating no profit. "
             "Review cost prices on those records."
         )
-
     return alerts
-
-
 # ─────────────────────────────────────────────────────────────────────────────
 # 5. TOP / WORST PRODUCT RANKINGS
 # ─────────────────────────────────────────────────────────────────────────────
@@ -378,8 +375,6 @@ def get_product_rankings(df):
     worst = [fmt(r) for _, r in grouped.tail(3).iloc[::-1].iterrows()]
 
     return top, worst
-
-
 # ─────────────────────────────────────────────────────────────────────────────
 # 6. TIME-BASED ANALYSIS
 # ─────────────────────────────────────────────────────────────────────────────
@@ -401,8 +396,6 @@ def get_time_insights(df):
         result['best_month'] = month_rev.idxmax()
 
     return result
-
-
 # ─────────────────────────────────────────────────────────────────────────────
 # 7. GOAL TRACKING
 # ─────────────────────────────────────────────────────────────────────────────
@@ -456,8 +449,6 @@ def calculate_goal_progress(df, monthly_goal_target):
         "goals":                 goals,
         "goal_raw":              target,
     }
-
-
 # ─────────────────────────────────────────────────────────────────────────────
 # 9. MULTI-CHART DATA PREPARATION
 # ─────────────────────────────────────────────────────────────────────────────
@@ -525,8 +516,6 @@ def prepare_chart_data(df):
         "growth_chart":      growth_chart,
         "category_chart":    category_chart,
     }
-
-
 # ─────────────────────────────────────────────────────────────────────────────
 # 8. ADMIN INTELLIGENCE
 # ─────────────────────────────────────────────────────────────────────────────
@@ -596,15 +585,12 @@ def get_admin_intelligence(conn):
     admin_insights.append(
         f"Platform has {new_user_count} active user(s) contributing to revenue."
     )
-
     return {
         "top_users":      top_users,
         "risk_users":     risk_users,
         "leaderboard":    leaderboard,
         "admin_insights": admin_insights,
     }
-
-
 # ─────────────────────────────────────────────────────────────────────────────
 # STATS API
 # ─────────────────────────────────────────────────────────────────────────────
@@ -677,14 +663,10 @@ def login():
         flash("Invalid login", "danger")
 
     return render_template('login.html')
-
-
 @app.route('/logout')
 def logout():
     session.clear()
     return redirect(url_for('home'))
-
-
 # ─────────────────────────────────────────────────────────────────────────────
 # SET GOAL
 # ─────────────────────────────────────────────────────────────────────────────
